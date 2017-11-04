@@ -1,5 +1,5 @@
 import './index.css'
-import App from './App'
+import * as App from './App'
 
-const render = (el, content) => (el.innerHTML = content)
-render(document.getElementById('root'), App())
+const render = (el, renderFunction) => (el.innerHTML = renderFunction())
+render(document.getElementById('root'), App.render)

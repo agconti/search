@@ -1,6 +1,6 @@
 import './App.css'
 
-const render = () => {
+export const render = () => {
     return `
       <div className="App">
         <header className="App-header">
@@ -11,5 +11,3 @@ const render = () => {
         </p>
     </div>`
 }
-
-export default render
