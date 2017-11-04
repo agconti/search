@@ -1,4 +1,6 @@
-export default class Store {
+const reducer = (state, action) => state
+
+class Store {
     constructor(reducer) {
         this.state = null
         this.listeners = []
@@ -16,3 +18,6 @@ export default class Store {
         this.listeners.push(listener)
     }
 }
+
+const store = new Store(reducer)
+export default store
