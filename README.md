@@ -1,5 +1,7 @@
 # Search
 
+A pure javascript implementation of a basic image search grid.
+
 ## Setup
 
 Clone the repository:
