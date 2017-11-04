@@ -11,7 +11,7 @@ class Store {
     }
     dispatch(action) {
         const { state, listeners, reducer } = this
-        state = reducer(state, action)
+        this.state = reducer(state, action)
         listeners.forEach(listener => listener())
     }
     subscribe(listener) {
