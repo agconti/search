@@ -1,13 +1,24 @@
-import './App.css'
+import './app.css'
+import './colors.css'
+
+const sources = [
+    'https://media.giphy.com/media/lAK7ACXBaEy4/giphy.gif',
+    'https://media.giphy.com/media/26FmPzA1QuRAIrkkM/giphy.gif',
+    'https://media.giphy.com/media/xT9IgmVz0jdY4lt4Dm/giphy.gif',
+]
+const Image = src => `<img class="grid__image" src=${src} /> `
+const Grid = () => `
+    <section class="grid">
+    ${sources.map(source => Image(source)).join('')}
+    </section>
+`
 
 export const render = () => {
     return `
-      <div class="App">
-        <header class="App-header">
-          <h1 class="App-title">Welcome to React</h1>
+      <section class="app">
+        <header class="header">
+          <h1 class="title">Simple Search App</h1>
         </header>
-        <p class="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-    </div>`
+        ${Grid()}
+    </section>`
 }
