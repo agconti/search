@@ -8,8 +8,23 @@ import { Grid } from './Grid'
 import store from './store'
 import { getImages } from './api'
 
+const Search = () => {
+    const searchContainer = document.createElement('div')
+    searchContainer.className = 'search'
+    searchContainer.innerHTML = `
+        <form action="">
+        <h1>Simple Search</h1>
+        <input type="text"/>
+        <buttom type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+    `
+    const input = searchContainer.querySelector('input')
+    input.onsubmit = () => alert(input.value)
+    return searchContainer
+}
 const render = (el, renderFunction) => () => (el.innerHTML = renderFunction())
 render(document.getElementById('root'), App)()
+document.getElementById('search').appendChild(Search())
 
 store.subscribe(() => {
     if (store.getState().activeItem) {
