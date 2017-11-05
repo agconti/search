@@ -1,6 +1,4 @@
 import './App.css'
-import { Grid } from './Grid'
-import { Lightbox } from './Lightbox'
 import store from './store'
 
 const App = () => `
