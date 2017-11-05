@@ -18,3 +18,15 @@
     max-width: 100%;
     object-fit: cover;
 }
+
+@media (max-width: 50em) {
+    .grid__item {
+        width: calc(33% - 2em);
+    }
+}
+
+@media (max-width: 30em) {
+    .grid__item {
+        width: calc(100% - 2em);
+    }
+}

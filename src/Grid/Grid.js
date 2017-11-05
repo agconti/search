@@ -3,7 +3,6 @@ import store from '../store'
 import { toggleActiveItem } from '../reducers'
 
 const GridItem = ({ imageId, name, thumbnailUrl }) => {
-    console.log(imageId)
     const gridItem = document.createElement('div')
     gridItem.classList.add('grid__item')
     gridItem.innerHTML = `<img class="image" src="${thumbnailUrl}" alt="${name}" />`
