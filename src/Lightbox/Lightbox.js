@@ -8,11 +8,18 @@ const Div = className => {
     return el
 }
 const Image = ({ name, contentUrl }) => {
-    const img = document.createElement('img')
-    img.className = 'image'
-    img.src = contentUrl
-    img.alt = name
-    return img
+    const imageContainer = Div('image-container')
+    imageContainer.innerHTML = `
+        <img class="image" src=${contentUrl} alt=${name}/>
+        <h3 class="image-container__title">${name}</h3>
+    `
+    return imageContainer
+}
+const Close = () => {
+    const close = Div('close')
+    close.innerHTML = '<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'
+    close.onclick = () => store.dispatch(toggleActiveItem(null))
+    return close
 }
 const Arrow = (direction, id) => {
     const arrow = Div(`arrow arrow--${direction}`)
@@ -22,13 +29,13 @@ const Arrow = (direction, id) => {
 }
 
 const Overlay = () => {
-    const overlay = Div('overlay')
+    const overlay = Div('overlay overlay--active')
     overlay.onclick = () => store.dispatch(toggleActiveItem(null))
     return overlay
 }
 export const Lightbox = (el, activeImage, previousItem, nextItem) => {
+    el.innerHTML = ''
     if (!activeImage) {
-        el.innerHTML = ''
         return
     }
     const lightbox = Div('lightbox')
@@ -37,6 +44,7 @@ export const Lightbox = (el, activeImage, previousItem, nextItem) => {
     previousItem && container.appendChild(Arrow('left', previousItem))
     container.appendChild(Image(activeImage))
     nextItem && container.appendChild(Arrow('right', nextItem))
+    container.appendChild(Close())
 
     lightbox.appendChild(container)
     lightbox.appendChild(Overlay())

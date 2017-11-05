@@ -28,6 +28,7 @@ store.subscribe(() => {
 
     Lightbox(document.getElementById('lightbox'), images[activeItem], previousItem, nextItem)
 })
+
 store.subscribe(() => {
     console.log(`running grid render`)
     const grid = document.querySelector('.grid')
