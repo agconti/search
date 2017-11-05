@@ -24,7 +24,7 @@ const request = url =>
         .then(checkStatus)
         .then(res => res.json())
 
-// export const search = query => request(`${resource}/search?q=${query}`).then(data => data.value)
+// export const search = query => request(`${resource}/search?q=${query}&size=large&count=32`).then(data => data.value)
 export const search = query => Promise.resolve(data.value)
 
 export const getImages = query => dispatch =>
