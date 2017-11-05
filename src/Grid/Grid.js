@@ -1,19 +1,16 @@
 import './Grid.css'
-import data from '../data'
+import store from '../store'
+import { toggleActiveItem } from '../reducers'
 
-const sources = [
-    'https://media.giphy.com/media/lAK7ACXBaEy4/giphy.gif',
-    'https://media.giphy.com/media/26FmPzA1QuRAIrkkM/giphy.gif',
-    'https://media.giphy.com/media/xT9IgmVz0jdY4lt4Dm/giphy.gif',
-]
-
-const Image = ({ name, thumbnailUrl }) => `
-    <div class="grid__item">
-        <img class="image" src="${thumbnailUrl}" alt="${name}" />
-    </div>
-`
-export const Grid = () => `
-    <section class="grid">
-        ${data.value.map(image => Image(image)).join('')}
-    </section>
-`
+const GridItem = ({ imageId, name, thumbnailUrl }) => {
+    const gridItem = document.createElement('div')
+    gridItem.classList.add('grid__item')
+    gridItem.innerHTML = `<img class="image" src="${thumbnailUrl}" alt="${name}" />`
+    gridItem.onclick = () => store.dispatch(toggleActiveItem(imageId))
+    // gridItem.onclick = () => alert('hello')
+    return gridItem
+}
+export const Grid = (gridElement, images) => {
+    gridElement.innerHTML = ''
+    images.forEach(image => gridElement.appendChild(GridItem(image)))
+}

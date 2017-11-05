@@ -52,6 +52,9 @@ const images = createReducer(defaultImagesState, {
     [ADD_IMAGES](state, { images }) {
         return images.reduce((acc, item) => image(acc, addImage(item)), { ...state })
     },
+    [ADD_IMAGES](state, { images }) {
+        return images.reduce((acc, item) => image(acc, addImage(item)), { ...state })
+    },
     [RESET_IMAGES]: () => defaultImagesState,
 })
 
