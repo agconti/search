@@ -17,10 +17,7 @@ const RESET_IMAGES = 'RESET_IMAGES'
 export const isFetching = isFetching => ({ type: IS_FETCHING, isFetching })
 export const toggleActiveItem = id => ({ type: TOGGLE_ACTIVE_ITEM, id })
 export const addImage = image => ({ type: ADD_IMAGE, image })
-export const addImages = images => {
-    console.log(images)
-    return { type: ADD_IMAGES, images }
-}
+export const addImages = images => ({ type: ADD_IMAGES, images })
 export const resetImages = () => ({ type: RESET_IMAGES })
 
 const defaultRootReducerState = {}

@@ -17,6 +17,7 @@ class Store {
     dispatch(action) {
         const { state, listeners, reducer } = this
         console.log(`DISPACHED ACTION`, action, state)
+
         // if the action is asychronous, ( a function ), recurse until
         // we can apply the action to our reducers
         if (typeof action === 'function') {
