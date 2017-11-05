@@ -1,0 +1,40 @@
+.lightbox {
+    --arrow-height: 16px;
+
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    z-index: var(--zindex-modal);
+    max-width: 55em;
+}
+
+.arrow {
+    position: absolute;
+    padding: 0 1em;
+    color: var(--color-accent);
+    top: calc(50% - var(--arrow-height));
+}
+
+.arrow--right {
+    right: 0;
+}
+
+.arrow--left {
+    left: 0;
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: var(--zindex-overlay);
+}
