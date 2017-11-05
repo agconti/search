@@ -16,3 +16,10 @@ export const Grid = (gridElement, images) => {
     gridElement.innerHTML = ''
     images.forEach(image => gridElement.appendChild(GridItem(image)))
 }
+
+store.subscribe(() => {
+    const grid = document.querySelector('.grid')
+    const { images } = store.getState()
+    const gridImages = Object.keys(images).map(id => images[id])
+    Grid(grid, gridImages)
+})

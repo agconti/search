@@ -1,6 +1,7 @@
 import './App.css'
 import { Grid } from './Grid'
 import { Lightbox } from './Lightbox'
+import store from './store'
 
 const App = () => `
     <section class="app">
@@ -14,3 +15,11 @@ const App = () => `
 `
 
 export default App
+
+store.subscribe(() => {
+    if (store.getState().activeItem) {
+        document.getElementById('root').style.position = 'fixed'
+        return
+    }
+    document.getElementById('root').style.position = 'initial'
+})

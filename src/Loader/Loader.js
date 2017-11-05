@@ -1,4 +1,5 @@
 import './Loader.css'
+import store from '../store'
 
 let prevIsFetching
 export const Loader = (el, isFetching) => {
@@ -18,3 +19,5 @@ export const Loader = (el, isFetching) => {
     `
     return el
 }
+
+store.subscribe(() => Loader(document.getElementById('loader'), store.getState().isFetching))
