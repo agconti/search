@@ -3,11 +3,14 @@ import store from '../store'
 import { toggleActiveItem } from '../reducers'
 
 const GridItem = ({ imageId, name, thumbnailUrl }) => {
+    console.log(imageId)
     const gridItem = document.createElement('div')
     gridItem.classList.add('grid__item')
     gridItem.innerHTML = `<img class="image" src="${thumbnailUrl}" alt="${name}" />`
-    gridItem.onclick = () => store.dispatch(toggleActiveItem(imageId))
-    // gridItem.onclick = () => alert('hello')
+    gridItem.onclick = () => {
+        console.log(`caught on click`, imageId, toggleActiveItem(imageId))
+        store.dispatch(toggleActiveItem(imageId))
+    }
     return gridItem
 }
 export const Grid = (gridElement, images) => {

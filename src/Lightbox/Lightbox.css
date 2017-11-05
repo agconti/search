@@ -1,6 +1,5 @@
 .lightbox {
     --arrow-height: 16px;
-
     position: absolute;
     top: 0;
     width: 100vw;
@@ -14,14 +13,22 @@
 .container {
     position: relative;
     z-index: var(--zindex-modal);
-    max-width: 55em;
+    padding: 1em;
+    height: 40em;
+    width: 55em;
+    background-color: var(--color-accent);
 }
 
 .arrow {
     position: absolute;
-    padding: 0 1em;
-    color: var(--color-accent);
+    padding: 0 2em;
+    color: var(--color-primary);
     top: calc(50% - var(--arrow-height));
+    transition: color 0.3s var(--ease-out-quint);
+}
+
+.arrow:hover {
+    color: var(--color-accent);
 }
 
 .arrow--right {

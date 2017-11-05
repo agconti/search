@@ -18,12 +18,16 @@ store.subscribe(() => {
     }
     document.getElementById('root').style.position = 'initial'
 })
-store.subscribe(
-    render(document.getElementById('lightbox'), () => {
-        const { activeItem, images } = store.getState()
-        return Lightbox(images[activeItem])
-    }),
-)
+
+store.subscribe(() => {
+    const { activeItem, images } = store.getState()
+    const imageIds = Object.keys(images)
+    const activeItemIndex = imageIds.indexOf(activeItem)
+    const previousItem = imageIds[activeItemIndex - 1]
+    const nextItem = imageIds[activeItemIndex + 1]
+
+    Lightbox(document.getElementById('lightbox'), images[activeItem], previousItem, nextItem)
+})
 store.subscribe(() => {
     console.log(`running grid render`)
     const grid = document.querySelector('.grid')
