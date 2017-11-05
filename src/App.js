@@ -5,7 +5,9 @@ import { Lightbox } from './Lightbox'
 const App = () => `
     <section class="app">
         <div id="lightbox"></div>
-        <section id="search"></section>
+        <header class="header">
+          <h1 class="title">Simple Search App</h1>
+        </header>
         <section class="grid"></section>
     </section>
 `
