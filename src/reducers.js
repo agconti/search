@@ -14,19 +14,26 @@ const REMOVE_IMAGE = 'REMOVE_IMAGE'
 const ADD_IMAGES = 'ADD_IMAGES'
 const RESET_IMAGES = 'RESET_IMAGES'
 
-const isFetching = () => ({ type: IS_FETCHING, isFetching})
-const toggleActiveItem = id => ({ type: TOGGLE_ACTIVE_ITEM, id})
-const addImage = image => ({ type: ADD_IMAGE, image})
-const addImages = images => ({ type: ADD_IMAGES, images})
-const resetImages = () => ({ type: RESET_IMAGES})
+export const isFetching = isFetching => ({ type: IS_FETCHING, isFetching })
+export const toggleActiveItem = id => ({ type: TOGGLE_ACTIVE_ITEM, id })
+export const addImage = image => ({ type: ADD_IMAGE, image })
+export const addImages = images => {
+    console.log(images)
+    return { type: ADD_IMAGES, images }
+}
+export const resetImages = () => ({ type: RESET_IMAGES })
 
 const defaultRootReducerState = {}
 const defaultIsFetchingState = false
 const defaultActiveItemState = ''
-const defaultImagesState = {}
+const defaultImageState = {}
 const defaultImagesState = {}
 
-export const activeItem = createReducer(defaultActiveItemState, {
+const isFetchingReducer = createReducer(defaultIsFetchingState, {
+    [IS_FETCHING]: (state, { isFetching = defaultIsFetchingState }) => isFetching,
+})
+
+const activeItem = createReducer(defaultActiveItemState, {
     [TOGGLE_ACTIVE_ITEM](state, { id }) {
         if (state === id) {
             return defaultActiveItemState
@@ -36,18 +43,20 @@ export const activeItem = createReducer(defaultActiveItemState, {
     [RESET_ACTIVE_ITEM]: () => defaultActiveItemState,
 })
 
-export const image = createReducer(defaultImageState, {
-    [ADD_IMAGE]: (state, { image }) => ({...state, [String(image.id)]: {...image }}),
-}
+const image = createReducer(defaultImageState, {
+    [ADD_IMAGE]: (state, { image }) => ({ ...state, [String(image.imageId)]: { ...image } }),
+})
 
-export const images = createReducer(defaultImagesState, {
+const images = createReducer(defaultImagesState, {
     [ADD_IMAGE]: image,
     [ADD_IMAGES](state, { images }) {
         return images.reduce((acc, item) => image(acc, addImage(item)), { ...state })
     },
-    [RESET_IMAGES]: () => defaultImagesState
-}
+    [RESET_IMAGES]: () => defaultImagesState,
+})
 
-const rootReducer = createReducer(defaultRootReducerState, {
-    [IS_FETCHING]: (state=defaultIsFetchingState, { isFetching }) => ({ ...state, isFetching }),
+export const rootReducer = (state = defaultRootReducerState, action) => ({
+    isFetching: isFetchingReducer(state.isFetching, action),
+    activeItem: activeItem(state.activeItem, action),
+    images: images(state.images, action),
 })

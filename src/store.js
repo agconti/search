@@ -1,12 +1,15 @@
-export default class Store {
+import { rootReducer } from './reducers'
+class Store {
     constructor(reducer) {
-        this.state = null
+        this.state = undefined
         this.listeners = []
         this.reducer = reducer
+        this.dispatch = this.dispatch.bind(this)
+        this.getState = this.getState.bind(this)
         this.populateInitalStateTree()
     }
     populateInitalStateTree() {
-        return this.dispatch({})
+        return this.dispatch({ type: `@@INIT` })
     }
     getState() {
         return { ...this.state }
@@ -16,7 +19,7 @@ export default class Store {
 
         // if the action is asychronous, ( a function ), recurse until
         // we can apply the action to our reducers
-        if (action === 'function') {
+        if (typeof action === 'function') {
             return action(this.dispatch, this.getState)
         }
 
@@ -27,3 +30,6 @@ export default class Store {
         this.listeners.push(listener)
     }
 }
+
+const store = new Store(rootReducer)
+export default store
