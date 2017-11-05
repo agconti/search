@@ -5,11 +5,14 @@ import './z-index.css'
 import App from './App'
 import { Lightbox } from './Lightbox'
 import { Grid } from './Grid'
+import { Loader } from './Loader'
 import store from './store'
 import { getImages } from './api'
 
 const render = (el, renderFunction) => () => (el.innerHTML = renderFunction())
 render(document.getElementById('root'), App)()
+
+store.subscribe(() => Loader(document.getElementById('loader'), store.getState().isFetching))
 
 store.subscribe(() => {
     if (store.getState().activeItem) {
@@ -30,7 +33,6 @@ store.subscribe(() => {
 })
 
 store.subscribe(() => {
-    console.log(`running grid render`)
     const grid = document.querySelector('.grid')
     const { images } = store.getState()
     const gridImages = Object.keys(images).map(id => images[id])
