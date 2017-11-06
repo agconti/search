@@ -20,4 +20,5 @@ export const Loader = (el, isFetching) => {
     return el
 }
 
-store.subscribe(() => Loader(document.getElementById('loader'), store.getState().isFetching))
+const LoaderContainer = () => Loader(document.getElementById('loader'), store.getState().isFetching)
+store.subscribe(LoaderContainer)

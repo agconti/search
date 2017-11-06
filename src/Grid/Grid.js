@@ -15,9 +15,11 @@ export const Grid = (gridElement, images) => {
     images.forEach(image => gridElement.appendChild(GridItem(image)))
 }
 
-store.subscribe(() => {
+const GridContainer = () => {
     const grid = document.querySelector('.grid')
     const { images } = store.getState()
     const gridImages = Object.keys(images).map(id => images[id])
     Grid(grid, gridImages)
-})
+}
+
+store.subscribe(GridContainer)

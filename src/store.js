@@ -1,4 +1,5 @@
 import { rootReducer } from './reducers'
+
 class Store {
     constructor(reducer) {
         this.state = undefined

@@ -72,7 +72,7 @@ export const Lightbox = (el, activeImage, previousItem, nextItem) => {
     el.appendChild(lightbox)
 }
 
-store.subscribe(() => {
+const LightboxContainer = () => {
     const { activeItem, images } = store.getState()
     const imageIds = Object.keys(images)
     const activeItemIndex = imageIds.indexOf(activeItem)
@@ -80,4 +80,6 @@ store.subscribe(() => {
     const nextItem = imageIds[activeItemIndex + 1]
 
     Lightbox(document.getElementById('lightbox'), images[activeItem], previousItem, nextItem)
-})
+}
+
+store.subscribe(LightboxContainer)
