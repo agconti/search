@@ -1,8 +1,20 @@
 :root {
+    --color-indigo: #2962ff;
+    --color-periwinkle: #768fff;
+    --color-ocean: #0039cb;
+    --color-hot-pink: #ff4081;
+    --color-light-pink: #ff79b0;
+    --color-rose: #c60055;
+
     --color-black: hsl(0, 0%, 0%);
     --color-grey: hsl(0, 0%, 50%);
     --color-white: hsl(0, 100%, 100%);
-    --color-primary: var(--color-grey);
-    --color-primary-dark: var(--color-black);
-    --color-accent: var(--color-white);
+
+    --color-primary: var(--color-indigo);
+    --color-primary-light: var(--color-periwinkle);
+    --color-primary-dark: var(--color-ocean);
+
+    --color-accent: var(--color-hot-pink);
+    --color-accent-light: var(--color-light-pink);
+    --color-accent-dark: var(--color-rose);
 }

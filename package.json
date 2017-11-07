@@ -2,7 +2,7 @@
   "name": "search",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://agconti.github.io/search",
+  "homepage": "http://agconti.github.io/search",
   "dependencies": {},
   "devDependencies": {
     "react-scripts": "1.0.17"

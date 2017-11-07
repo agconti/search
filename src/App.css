@@ -9,7 +9,7 @@
     display: flex;
     background-color: var(--color-primary);
     padding: 0.5em 1.5em;
-    color: var(--color-accent);
+    color: var(--color-white);
 }
 
 .title {
