@@ -4,7 +4,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: var(--gutter);
+    margin: 0 auto;
+    max-width: 60em;
 }
 
 .grid__item {
