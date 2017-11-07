@@ -33,6 +33,6 @@
 
 @media (max-width: 30em) {
     .grid__item {
-        width: calc(100% - var(--gutter) * 2);
+        width: calc(50% - var(--gutter) * 2);
     }
 }
