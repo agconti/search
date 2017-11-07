@@ -1,4 +1,5 @@
 import './App.css'
+import { SearchBar } from './SearchBar'
 import store from './store'
 
 const App = () => `
@@ -7,6 +8,7 @@ const App = () => `
         <div id="lightbox"></div>
         <header class="header">
           <h1 class="title">Simple Search App</h1>
+          <div class="searchbar"></div>
         </header>
         <section class="grid"></section>
     </section>
@@ -15,9 +17,11 @@ const App = () => `
 export default App
 
 store.subscribe(() => {
+    const rootElement = document.getElementById('root')
+
     if (store.getState().activeItem) {
-        document.getElementById('root').style.position = 'fixed'
+        rootElement.style.position = 'fixed'
         return
     }
-    document.getElementById('root').style.position = 'initial'
+    rootElement.style.position = 'initial'
 })
