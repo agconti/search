@@ -14,7 +14,7 @@ const Div = className => {
 const Image = ({ name, contentUrl }) => {
     const imageContainer = Div('image-container')
     imageContainer.innerHTML = `
-        <img class="image" src="${contentUrl}"alt="${name}"/>
+        <img class="image" src="${contentUrl}" alt="${name}"/>
         <h3 class="image-container__title">${name}</h3>
     `
     return imageContainer
