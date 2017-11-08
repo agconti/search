@@ -10,4 +10,4 @@ import store from './store'
 import { getImages } from './api'
 
 document.getElementById('root').innerHTML = App()
-store.dispatch(getImages('bears'))
+store.dispatch(getImages('climbing'))

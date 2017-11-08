@@ -3,11 +3,9 @@ import * as actions from './reducers'
 import data from './data'
 
 const resource = 'https://api.cognitive.microsoft.com/bing/v7.0/images'
-const mode = 'cors'
-const headers = new Headers({
-    Accept: 'application/json',
+const headers = {
     'Ocp-Apim-Subscription-Key': API_KEY,
-})
+}
 
 const checkStatus = response => {
     const { status, statusText } = response
@@ -22,12 +20,11 @@ const checkStatus = response => {
 }
 
 const request = url =>
-    fetch(url, { headers, mode, method: 'GET' })
+    fetch(url, { headers })
         .then(checkStatus)
         .then(res => res.json())
 
-export const search = query =>
-    request(`${resource}/search?q=${query}&size=large&count=32&color=blue`).then(data => data.value)
+export const search = query => request(`${resource}/search?q=${query}&size=large&count=32&color=blue`).then(data => data.value)
 
 export const getImages = query => dispatch =>
     Promise.resolve(dispatch(actions.isFetching(true)))

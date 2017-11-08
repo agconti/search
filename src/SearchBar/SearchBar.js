@@ -13,7 +13,7 @@ export const SearchBar = el => {
     const form = document.createElement('form')
     form.onsubmit = () => {
         const query = input.value
-        store.dispatch(getImages('climbing'))
+        store.dispatch(getImages(query))
         return false
     }
     form.innerHTML = `
