@@ -10,20 +10,23 @@ const Div = className => {
     el.className = className
     return el
 }
+
 const Image = ({ name, contentUrl }) => {
     const imageContainer = Div('image-container')
     imageContainer.innerHTML = `
-        <img class="image" src=${contentUrl} alt=${name}/>
+        <img class="image" src="${contentUrl}"alt="${name}"/>
         <h3 class="image-container__title">${name}</h3>
     `
     return imageContainer
 }
+
 const Close = () => {
     const close = Div('close')
     close.innerHTML = '<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'
     close.onclick = exitLightBox
     return close
 }
+
 const Arrow = (direction, id) => {
     const arrow = Div(`arrow arrow--${direction}`)
     arrow.innerHTML = `<i class="fa fa-angle-${direction} fa-2x" aria-hidden="true"></i>`

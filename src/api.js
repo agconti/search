@@ -1,6 +1,5 @@
 import { API_KEY } from './config'
 import * as actions from './reducers'
-import data from './data'
 
 const resource = 'https://api.cognitive.microsoft.com/bing/v7.0/images'
 const headers = {
@@ -24,7 +23,8 @@ const request = url =>
         .then(checkStatus)
         .then(res => res.json())
 
-export const search = query => request(`${resource}/search?q=${query}&size=large&count=32&color=blue`).then(data => data.value)
+export const search = query =>
+    request(`${resource}/search?q=${query}&size=large&count=32&color=blue`).then(data => data.value)
 
 export const getImages = query => dispatch =>
     Promise.resolve(dispatch(actions.isFetching(true)))

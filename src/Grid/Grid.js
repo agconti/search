@@ -10,6 +10,7 @@ const GridItem = ({ imageId, name, thumbnailUrl }) => {
 
     return gridItem
 }
+
 export const Grid = (gridElement, images) => {
     gridElement.innerHTML = ''
     images.forEach(image => gridElement.appendChild(GridItem(image)))

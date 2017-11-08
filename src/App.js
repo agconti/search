@@ -12,12 +12,14 @@ const App = () => `
     </section>
 `
 
-export default App
-
 store.subscribe(() => {
+    const rootEl = document.getElementById('root')
+
     if (store.getState().activeItem) {
-        document.getElementById('root').style.position = 'fixed'
+        rootEl.style.position = 'fixed'
         return
     }
-    document.getElementById('root').style.position = 'initial'
+    rootEl.style.position = 'initial'
 })
+
+export default App
